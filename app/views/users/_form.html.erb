@@ -1,0 +1,45 @@
+<%= form_for(@user, :html => {:multipart => true}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname,'First Name' %><br />
+    <%= f.text_field :fname, :size => "35" %>
+  </div>
+  <div class="field">
+    <%= f.label :lname,'Last Name' %><br />
+    <%= f.text_field :lname, :size => "35" %>
+  </div>
+  <div class="field">
+    <%= f.label :dob, 'Date of Birth' %><br />
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address, :size => "40x5" %>
+  </div>
+  <div class="field">
+    <%= f.label :email, 'Email Id'%><br />
+    <%= f.text_field :email, :size => "35" %>
+  </div>
+  <div class="field">
+    <%= f.label :mobileNo, 'Mobile No' %><br />
+    <%= f.text_field :mobileNo, :size => "35" %>
+  </div>
+  <div class="photo">
+    <%= f.label :profilepic, 'Profile Picture' %><br />
+    <%= f.file_field :profilepic %><br />
+  </div><br />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
